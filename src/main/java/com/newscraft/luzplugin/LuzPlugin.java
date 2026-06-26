@@ -6,6 +6,7 @@ public class LuzPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         getLogger().info("LuzPlugin | NewsCraft ativado com sucesso!");
         LuzCommand luzCommand = new LuzCommand(this);
         getCommand("luz").setExecutor(luzCommand);
