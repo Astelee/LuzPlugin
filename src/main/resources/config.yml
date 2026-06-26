@@ -1,0 +1,4 @@
+# Configuracoes do LuzPlugin - NewsCraft
+# Duracao da visao noturna em ticks (20 ticks = 1 segundo)
+# Para duracao infinita deixe: -1
+duracao: -1
