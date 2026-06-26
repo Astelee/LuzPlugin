@@ -15,8 +15,6 @@ import java.util.List;
 public class LuzCommand implements CommandExecutor, TabCompleter {
 
     private final LuzPlugin plugin;
-    private static final int DURACAO = Integer.MAX_VALUE;
-    private static final int AMPLIFICADOR = 0;
 
     public LuzCommand(LuzPlugin plugin) {
         this.plugin = plugin;
@@ -40,13 +38,19 @@ public class LuzCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        // Lê a duração do config.yml
+        int duracao = plugin.getConfig().getInt("duracao", -1);
+        if (duracao <= 0) {
+            duracao = Integer.MAX_VALUE;
+        }
+
         if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION)) {
             player.removePotionEffect(PotionEffectType.NIGHT_VISION);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                 "&8[&bNewsCraft&8] &eSua visao noturna foi &cdesativada&e!"));
         } else {
             player.addPotionEffect(new PotionEffect(
-                PotionEffectType.NIGHT_VISION, DURACAO, AMPLIFICADOR, false, false));
+                PotionEffectType.NIGHT_VISION, duracao, 0, false, false));
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                 "&8[&bNewsCraft&8] &eSua visao noturna foi &aativada&e!"));
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
