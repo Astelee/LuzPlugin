@@ -15,7 +15,7 @@ import java.util.List;
 public class LuzCommand implements CommandExecutor, TabCompleter {
 
     private final LuzPlugin plugin;
-    private static final int DURACAO = 99999;
+    private static final int DURACAO = Integer.MAX_VALUE;
     private static final int AMPLIFICADOR = 0;
 
     public LuzCommand(LuzPlugin plugin) {
